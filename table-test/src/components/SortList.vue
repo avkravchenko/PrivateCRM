@@ -27,10 +27,9 @@ export default {
     };
   },
   mounted() {
+    //   пробовал после перезагрузки достать с помощью this.$route.query.option, но так и не получилось, поэтому метод с window
     const queryOption = window.location.search.match(/=([^&]+)/);
     const value = queryOption[1];
-    console.log(value);
-
     if (this.options.some((option) => option.value === value)) {
       this.selectedOption = value;
     }
