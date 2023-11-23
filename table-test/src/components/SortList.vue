@@ -26,20 +26,20 @@ export default {
       ],
     };
   },
-  beforeMount() {
-    // Set selectedOption based on the query parameter
-    const queryOption = this.$route;
-    console.log(queryOption);
+  mounted() {
+    //   пробовал после перезагрузки достать с помощью this.$route.query.option, но так и не получилось, поэтому метод с window
+    const queryOption = window.location.search.match(/=([^&]+)/);
+    const value = queryOption[1];
+    if (this.options.some((option) => option.value === value)) {
+      this.selectedOption = value;
+    }
   },
   watch: {
     selectedOption(newOption) {
-      // Update the query parameter when selectedOption changes
       this.$router.push({ query: { option: newOption } });
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
-/* Add your styles here */
-</style>
+<style lang="scss" scoped></style>
