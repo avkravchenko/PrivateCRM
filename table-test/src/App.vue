@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     changeTheOrder() {
-      console.log(111);
       if (this.$route.query.option) this.isOrderChanged = !this.isOrderChanged;
     },
     sortData(mode) {
