@@ -18,7 +18,6 @@
           :class="{ 'status': true, 'up-arrow': orderIcon, 'down-arrow': !orderIcon }">
             Статус
         </span>
-        <SortList/>
       </th>
     </thead>
     <tbody>
@@ -60,7 +59,11 @@
         </td>
         <td>{{ user.phone }}</td>
         <td>
-          <p v-for="(date, index) in user.dates">{{ `${date.start_date}-${date.end_date}` }} <hr v-if="index !== user.dates.length - 1"></p>
+          <p v-for="(date, index) in user.dates">
+            {{ date.start_date }} <br/>
+            {{ date.end_date }}
+            <hr v-if="index !== user.dates.length - 1">
+          </p>
         </td>
         <td>{{ user.discount }}%</td>
         <td>
@@ -84,7 +87,7 @@
 </template>
 
 <script>
-import SortList from '@/components/SortList.vue'
+
 export default {
   props: {
     usersToDisplay: {
@@ -95,9 +98,7 @@ export default {
       type: Boolean
     }
   },
-  components: {
-    SortList
-  }
+
 };
 </script>
 
